@@ -16,8 +16,17 @@ code {
     monospace;
 }
 
-.leaflet-container{
+.leaflet-container {
   width: inherit;
   height: inherit;
 }
 
+.slick-prev {
+  left: -15px !important;
+  z-index: 1;
+}
+
+.slick-next {
+  right: -15px !important;
+  z-index: 1;
+}

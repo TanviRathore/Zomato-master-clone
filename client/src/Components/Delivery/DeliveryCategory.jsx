@@ -22,12 +22,12 @@ function DeliverySmCard({image, title}){
 function DeliveryLgCard({image, title}){
     return(
         <>
-            <div className="hidden lg:block w-64 h-full px-9 text-center">
+            <div className="hidden lg:block w-80 h-full px-9 text-center mx-0">
                 <div className="w-full h-48">
                     <img 
                          src={image}
                         alt="foodImage"
-                        className="w-full h-full object-cover rounded-t-md"
+                        className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
                 <div>

@@ -129,9 +129,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
 function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const [user, setUser] = useState({
-        name: "",
-    });
+    const [user, setUser] = useState();
 
     return (
         <>

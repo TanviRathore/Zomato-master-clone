@@ -7,7 +7,7 @@ import { NextArrow, PrevArrow } from '../Components/CarouselArrows';
 import { IoMdArrowDropright } from 'react-icons/io'
 import MenuCollections from '../Components/Restaurant/MenuCollections';
 import MenuSimilarRestaurantCards from '../Components/Restaurant/MenuSimilarRestaurantCards';
-import RevieCard from '../Components/Restaurant/RevieCard';
+import ReviewCard from '../Components/Restaurant/ReviewCard';
 import MapView from '../Components/Restaurant/MapView';
 
 
@@ -184,7 +184,7 @@ function Overview() {
                           size={24}
                         />
                         {Reviews.map((reviewData) => (
-                          <RevieCard {...reviewData} />
+                          <ReviewCard {...reviewData} />
                         ))}
                     </div>
                 </div> 

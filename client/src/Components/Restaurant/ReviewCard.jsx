@@ -2,7 +2,7 @@ import React from 'react';
 import { TiStarFullOutline } from 'react-icons/ti';
 import dayjs from 'dayjs';
 
-function RevieCard(props) {
+function ReviewCard(props) {
     return (
         <>
             <div className="my-4 flex flex-col gap-3">
@@ -49,4 +49,4 @@ function RevieCard(props) {
     );
 }
 
-export default RevieCard;
+export default ReviewCard;

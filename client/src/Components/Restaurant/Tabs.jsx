@@ -7,12 +7,12 @@ function Tab(props){
 
     return(
         <Link to={`/restaurant/${id}/${props.route}`}>
-            <div className={classnames(" text-gray-500 relative font-light text-center text-sm md:text-3xl", {
+            <div className={classnames(" text-gray-500 relative font-light text-center text-sm md:text-xl", {
                 "text-Zomato-400 font-semibold" : props.isActive,
             })}
             style={{minWidth: "100px"}}
             >
-                <h3 className="text-lg md:text-3xl">{props.title}</h3>
+                <h3 className="text-lg md:text-xl">{props.title}</h3>
             </div>
         </Link>
     );

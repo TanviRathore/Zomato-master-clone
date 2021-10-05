@@ -47,7 +47,7 @@ function DeliveryCarousel() {
           arrows: true,
           infinite: false,
           speed: 500,
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 2,
           initialSlide: 0,
           nextArrow: <NextArrow />,
@@ -56,30 +56,30 @@ function DeliveryCarousel() {
               {
                 breakpoint: 1299,
                 settings: {
-                slidesToShow: 4,
+                slidesToShow: 3,
                 },
             },
         ],
       };
 
     return (
-        <>
+        <div className="bg-gray-100 px-1">
          <h1 className="text-3xl mb-4 font-semibold">Inspiration for your First Order</h1>   
 
          <div className="lg:hidden flex flex-wrap justify-around gap-2">
            {categories.map((food) => (
-             <DeliveryCategory {...food} />
+             <DeliveryCategory {...food} key={food._id}/>
            ))}
          </div>
 
          <div className="hidden lg:block">
            <Slider {...settings}>
             {categories.map((food) => (
-                <DeliveryCategory {...food} />
+                <DeliveryCategory {...food} key={food._id}/>
               ))}
            </Slider>
          </div>
-        </>
+        </div>
     )
 }
 

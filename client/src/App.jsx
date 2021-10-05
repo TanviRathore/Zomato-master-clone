@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import Overview from "./pages/Overview";
 import Photos from "./pages/Photos";
 import Menu from "./pages/Menu";
+import Reviews from "./pages/Reviews";
+import OrderOnline from "./pages/OrderOnline";
 
 function App() {
   return (
@@ -21,8 +23,8 @@ function App() {
       <HomeLayoutHOC path="/:type" exact component={Home} />
       <RestaurantHOC path="/restaurant/:id" exact component={Temp} />
       <RestaurantHOC path="/restaurant/:id/overview" exact component={Overview} />
-      <RestaurantHOC path="/restaurant/:id/order-online" exact component={Temp} />
-      <RestaurantHOC path="/restaurant/:id/reviews" exact component={Temp} />
+      <RestaurantHOC path="/restaurant/:id/order-online" exact component={OrderOnline} />
+      <RestaurantHOC path="/restaurant/:id/reviews" exact component={Reviews} />
       <RestaurantHOC path="/restaurant/:id/menu" exact component={Menu} />
       <RestaurantHOC path="/restaurant/:id/photos" exact component={Photos} />
     </div>
