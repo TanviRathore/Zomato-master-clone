@@ -5,7 +5,10 @@ import {IoMdArrowDropdown, IoMdArrowDropup} from "react-icons/io"
 import {RiSearch2Line} from "react-icons/ri";
 import {FaUserAlt} from "react-icons/fa";
 
-function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
+import SignIn from '../Auth/SignIn';
+import SignUp from '../Auth/SignUp';
+
+function SmNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
     return(
         <>
             <div className="flex justify-between items-center lg:hidden w-full">
@@ -43,8 +46,8 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
                             </span>
                             {isDropdownOpen && (
                                 <div className="absolute py-3 shadow-lg -bottom-20 -right-4 w-full bg-white flex flex-col gap-2">
-                                    <button>Sign In</button>
-                                    <button>Sign Out</button>
+                                    <button onClick={signIn}>Sign In</button>
+                                    <button onClick={signUp}>Sign Up</button>
                                 </div>
                             )}
                         </>
@@ -55,7 +58,7 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
     );
 };
 
-function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
+function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
     return(
         <>
             <div className="hidden container lg:inline mx-auto px-20">
@@ -111,10 +114,12 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
 
                     ):(
                         <div className="ml-28 flex gap-6">
-                        <button className="text-gray-500 text-xl hover:text-gray-800">
+                        <button onClick={signIn} 
+                            className="text-gray-500 text-xl hover:text-gray-800">
                             Login
                         </button>
-                        <button className="text-gray-500 text-xl hover:text-gray-800">
+                        <button onClick={signUp} 
+                            className="text-gray-500 text-xl hover:text-gray-800">
                             Signup
                         </button>
                         </div>
@@ -128,21 +133,36 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
 
 function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
     const [user, setUser] = useState();
+    const [openSignup, setOpenSignup] = useState(false);
+    const [openSignin, setOpenSignin] = useState(false);
+
+    const openSignInModal = () => {
+        setOpenSignin(true);
+    };
+    
+    const openSignUpModal = () => {
+        setOpenSignup(true);
+    };
 
     return (
         <>
+            <SignUp isOpen={openSignup} setIsOpen={setOpenSignup} />
+            <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
             <nav className="py-3 px-4 lg:p-4 flex bg-white shadow-md lg:shadow-none w-full items-center">
                 <SmNav 
                     user={user}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
+                    signIn={openSignInModal}
+                    signUp={openSignUpModal}
                 />
                 <LgNav
                     user={user}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
+                    signIn={openSignInModal}
+                    signUp={openSignUpModal}
                 />
 
             </nav>

@@ -30,3 +30,11 @@ code {
   right: -15px !important;
   z-index: 1;
 }
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+section::-webkit-scrollbar {
+  display: none;
+}

@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-import RestaurantNav from "../Components/Navbar/RestaurantNavbar";
-import ImageGrid from "../Components/Restaurant/ImageGrid";
-import InfoButtons from "../Components/Restaurant/InfoButtons";
-import RestaurantInfo from "../Components/Restaurant/RestaurantInfo";
-
 import {TiStarOutline} from "react-icons/ti";
 import {RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
 import {BiBookmarkPlus} from "react-icons/bi";
 import Tabs from "../Components/Restaurant/Tabs";
+
+import RestaurantNav from "../Components/Navbar/RestaurantNavbar";
+import ImageGrid from "../Components/Restaurant/ImageGrid";
+import InfoButtons from "../Components/Restaurant/InfoButtons";
+import RestaurantInfo from "../Components/Restaurant/RestaurantInfo";
+import CartContainer from "../Components/Cart/CartContainer";
 
 function RestaurantLayout({children}) {
 
@@ -57,6 +58,7 @@ function RestaurantLayout({children}) {
               </div>
               {children}
             </div>
+            <CartContainer />
         </>
     );
 }
