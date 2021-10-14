@@ -38,7 +38,7 @@ function RestaurantCard(props) {
                 </div>
                 <div className="flex flex-col gap-2 my-2">
                     <div className="flex items-center justify-between">
-                        <h4 className="text-xl font-medium">The Indo-Asian Kitchen</h4>
+                        <h4 className="text-xl font-medium">{props.name}</h4>
                         <span className="bg-green-800 text-white text-sm p-1 rounded flex items-center">
                             {props.restaurantReviewValue} <AiTwotoneStar />
                         </span>
