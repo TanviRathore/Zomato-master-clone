@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlinePlus } from "react-icons/ai";
 import ReactStars from "react-rating-stars-component";
+import {useDispatch} from 'react-redux';
+
+import {getFood} from '../../../Redux/Reducer/Food/Food.action';
+import {getImage} from '../../../Redux/Reducer/Image/Image.action';
 
 
 function FoodItem(props) {
+
+    const [food, setFood] = useState({});
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(props);
+        dispatch(getFood(props._id)).then((data) => {
+            setFood(data.payload.foods);
+            dispatch(getImage(data.payload.foods.photos)).then((data) => {
+                const {images} = data.payload.image;
+                images.length && setFood((prev) => ({ ...prev, image: images[0].location }));
+            });
+        });
+    }, [])
+
     return (
         <>
             <div className="flex items-start gap-2 py-2">
