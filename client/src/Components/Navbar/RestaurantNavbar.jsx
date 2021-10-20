@@ -4,9 +4,16 @@ import {HiLocationMarker} from "react-icons/hi";
 import {IoMdArrowDropdown, IoMdArrowDropup} from "react-icons/io"
 import {RiSearch2Line} from "react-icons/ri";
 import {FaUserAlt} from "react-icons/fa";
-import {AiOutlineArrowLeft} from "react-icons/ai"
+import {AiOutlineArrowLeft} from "react-icons/ai";
 
-function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
+import SignIn from '../Auth/SignIn';
+import SignUp from '../Auth/SignUp';
+import { useSelector } from 'react-redux';
+
+function SmNav({user, isDropdownOpen, setIsDropdownOpen, SignIn, SignUp}){
+
+    const reduxState = useSelector((globalStore) => globalStore.user.user);
+
     return(
         <>
             <div className="flex justify-between items-center lg:hidden w-full">
@@ -20,7 +27,7 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
                 </div>
                 <div className="flex gap-3 items-center relative">
                     <button className="bg-Zomato-400 rounded-full px-2 py-2 text-white text-xs">Use App</button>
-                    {user ? (
+                    {reduxState?.user?.fullName ? (
                        <>
                             <div onClick={() => setIsDropdownOpen((prev) => !prev)} 
                                 className="rounded-full p-1 border border-gray-400 text-Zomato-400 w-9 h-9">
@@ -45,8 +52,8 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
                             </span>
                             {isDropdownOpen && (
                                 <div className="absolute py-3 shadow-lg -bottom-20 -right-4 w-full bg-white flex flex-col gap-2">
-                                    <button>Sign In</button>
-                                    <button>Sign Out</button>
+                                    <button onClick={SignIn}>Sign In</button>
+                                    <button onClick={SignUp}>Sign Up</button>
                                 </div>
                             )}
                         </>
@@ -57,7 +64,10 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen}){
     );
 };
 
-function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
+function LgNav({user, isDropdownOpen, setIsDropdownOpen, SignIn, SignUp}){
+
+    const reduxState = useSelector((globalStore) => globalStore.user.user);
+
     return(
         <>
             <div className="hidden container lg:inline mx-auto px-20">
@@ -92,7 +102,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
                         </div>
                     </div>
 
-                    {user ? (
+                    {reduxState?.user?.fullName ? (
                         <div className="relative w-14">
                         <div
                           onClick={() => setIsDropdownOpen((prev) => !prev)}
@@ -113,10 +123,10 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
 
                     ):(
                         <div className="ml-28 flex gap-6">
-                        <button className="text-gray-500 text-xl hover:text-gray-800">
-                            Login
+                        <button onClick={SignIn} className="text-gray-500 text-xl hover:text-gray-800">
+                            Signin
                         </button>
-                        <button className="text-gray-500 text-xl hover:text-gray-800">
+                        <button onClick={SignUp} className="text-gray-500 text-xl hover:text-gray-800">
                             Signup
                         </button>
                         </div>
@@ -130,6 +140,11 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen}){
 
 function RestaurantNav() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [openSignup, setOpenSignup] = useState(false);
+    const [openSignin, setOpenSignin] = useState(false);
+
+    const openSignInModal = () => setOpenSignin(true);
+    const openSignUpModal = () => setOpenSignup(true);
 
     const [user, setUser] = useState({
         name: "",
@@ -137,16 +152,22 @@ function RestaurantNav() {
 
     return (
         <>
+            <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
+            <SignUp isOpen={openSignup} setIsOpen={setOpenSignup} />
             <nav className="py-3 px-4 lg:p-4 flex bg-white shadow-md lg:shadow-none w-full items-center">
                 <SmNav 
                     user={user}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
+                    SignIn={openSignInModal}
+                    SignUp={openSignUpModal}
                 />
                 <LgNav
                     user={user}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
+                    SignIn={openSignInModal}
+                    SignUp={openSignUpModal}
                 />
 
             </nav>

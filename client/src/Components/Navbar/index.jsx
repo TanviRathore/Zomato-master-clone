@@ -116,7 +116,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
                         <div className="ml-28 flex gap-6">
                         <button onClick={signIn} 
                             className="text-gray-500 text-xl hover:text-gray-800">
-                            Login
+                            Signin
                         </button>
                         <button onClick={signUp} 
                             className="text-gray-500 text-xl hover:text-gray-800">
