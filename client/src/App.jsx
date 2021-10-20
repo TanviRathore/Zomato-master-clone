@@ -1,12 +1,13 @@
 import HomeLayoutHOC from "./HOC/Home.HOC";
 import RestaurantHOC from "./HOC/Restaurant.HOC";
- import {Route, Redirect} from "react-router";
+ import {Route, Redirect} from "react-router-dom";
  import Temp from "./Components/Temp";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// pages
 import Home from "./pages/Home";
 import Overview from "./pages/Overview";
 import Photos from "./pages/Photos";
@@ -15,6 +16,8 @@ import Reviews from "./pages/Reviews";
 import OrderOnline from "./pages/OrderOnline";
 import CheckoutLayoutHOC from "./HOC/Checkout.HOC";
 import Checkout from "./pages/Checkout";
+import RestaurantRedirect from "./pages/RestaurantRedirect";
+import GoogleAuth from "./pages/GoogleAuth";
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
         <Redirect to="/delivery" />
       </Route>
       <HomeLayoutHOC path="/:type" exact component={Home} />
+      <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
+      <Route path="/restaurant/:id" exact component={RestaurantRedirect} />
       <RestaurantHOC path="/restaurant/:id" exact component={Temp} />
       <RestaurantHOC path="/restaurant/:id/overview" exact component={Overview} />
       <RestaurantHOC path="/restaurant/:id/order-online" exact component={OrderOnline} />

@@ -27,7 +27,7 @@ function FoodItem(props) {
     return (
         <>
             <div className="flex items-start gap-2 py-2">
-                {props ?.image && (
+                {props?.image && (
                     <div className="w-3/12 h-24 md:h-28 lg:h-36  md:px-3">
                         <img 
                             src={props.image}

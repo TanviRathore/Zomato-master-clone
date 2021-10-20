@@ -1,7 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
-
 import { FcGoogle } from "react-icons/fc";
+
+import {useDispatch} from 'react-redux';
+import {signIn} from '../../Redux/Reducer/Auth/auth.action';
 
 export default function SignIn({isOpen, setIsOpen}) {
     const [userData, setUserData] = useState({
@@ -16,6 +18,21 @@ export default function SignIn({isOpen, setIsOpen}) {
     function closeModal() {
         setIsOpen(false)
     }
+
+    const dispatch = useDispatch();
+
+    const  submit = () => {
+        setUserData({
+            email: "",
+            password: "",
+        });
+
+        dispatch(signIn(userData));
+
+        closeModal();
+    };
+
+    const googleSignIn = () => (window.location.href = "http://localhost:4000/auth/google");
 
     return (
         <>
@@ -60,7 +77,7 @@ export default function SignIn({isOpen, setIsOpen}) {
                     className="text-lg font-medium leading-6 text-gray-900"
                     ></Dialog.Title>
                     <div className="mt-2 flex flex-col w-full gap-3">
-                        <button className="py-2 justify-center rounded-lg flex items-center gap-2 border border-gray-400 w-full bg-white text-gray-700 hover:bg-gray-100">
+                        <button onClick={googleSignIn} className="py-2 justify-center rounded-lg flex items-center gap-2 border border-gray-400 w-full bg-white text-gray-700 hover:bg-gray-100">
                             Sign in with Google <FcGoogle />
                         </button>
                         
@@ -88,7 +105,7 @@ export default function SignIn({isOpen, setIsOpen}) {
                                 />
                             </div>
                             <div
-                                onClick={closeModal}
+                                onClick={submit}
                                 className="w-full text-center bg-Zomato-400 text-white py-2 rounded-lg"
                             >
                                 Sign up

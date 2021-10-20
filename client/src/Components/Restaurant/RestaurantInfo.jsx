@@ -31,7 +31,7 @@ function RestaurantInfo(props) {
                 </div>    
             </div>    
             <div className="text-base md:text-xl text-gray-600">
-                <h2>{props.cuisine}</h2>
+                <h2>{props.cuisine && props.cuisine.join(", ")}</h2>
                 <h2 className="text-gray-400">{props.address}</h2>
                 <h2>
                  <span className="text-yellow-500">Open Now</span> - 11am - 8pm

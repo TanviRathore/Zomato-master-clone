@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import {AiTwotoneStar} from 'react-icons/ai';
 
+import {useDispatch} from 'react-redux';
+import {getImage, getImages} from '../Redux/Reducer/Image/Image.action';
 
 function RestaurantCard(props) {
 
+    const [image, setImage] = useState({
+        images: [],
+    });
+
     const [isPro] = useState(true);
     const [isOff] = useState(true);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getImage(props.photos)).then((data) => setImage(props.payload.image));
+    }, [props.photos]);
 
     return (
         <Link to="/restaurant/123" className="w-full md:w-1/2 lg:w-1/3">
@@ -31,7 +43,7 @@ function RestaurantCard(props) {
                         </span>
                     </div>
                     <img
-                        src="https://b.zmtcdn.com/data/pictures/chains/4/19661324/959304c2344b505fcbb87fbc3496644d_o2_featured_v2.jpg"
+                        src={image.images.length && image.images[0].location}
                         alt="food"
                         className="w-full h-full rounded-2xl object-center object-cover"
                     />
