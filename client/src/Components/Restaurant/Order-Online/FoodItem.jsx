@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import ReactStars from "react-rating-stars-component";
 import {useDispatch} from 'react-redux';
 
-import {getFood} from '../../../Redux/Reducer/Food/Food.action';
+import {getFood} from '../../../Redux/Reducer/Food/food.action';
 import {getImage} from '../../../Redux/Reducer/Image/Image.action';
 
 

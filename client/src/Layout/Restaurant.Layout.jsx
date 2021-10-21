@@ -2,14 +2,16 @@ import React, {useEffect, useState} from "react";
 import {TiStarOutline} from "react-icons/ti";
 import {RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
 import {BiBookmarkPlus} from "react-icons/bi";
-import Tabs from "../Components/Restaurant/Tabs";
 
+// Components
+import Tabs from "../Components/Restaurant/Tabs";
 import RestaurantNav from "../Components/Navbar/RestaurantNavbar";
 import ImageGrid from "../Components/Restaurant/ImageGrid";
 import InfoButtons from "../Components/Restaurant/InfoButtons";
 import RestaurantInfo from "../Components/Restaurant/RestaurantInfo";
 import CartContainer from "../Components/Cart/CartContainer";
 
+// Redux
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {getImage} from "../Redux/Reducer/Image/Image.action";

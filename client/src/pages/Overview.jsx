@@ -39,9 +39,6 @@ function Overview() {
       }
     }, [reduxState]);
     
-    const cuisines = ["Indian", "Asian", "Italian"];
-    const averageCost = 100;
-    
     const ratingChanged = (newRating) => {
       console.log(newRating);
     };
@@ -184,7 +181,7 @@ function Overview() {
                   <MapView 
                     title={reduxState?.name}
                     phno={reduxState?.contactNumber}
-                    mapLocation={getLatLong(reduxState?.mapLocation)}
+                    mapLocation={getLatLong(reduxState?.mapLocation)} // problem 
                     address={reduxState?.address}
                   />
                 </aside>

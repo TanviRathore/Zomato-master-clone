@@ -1,7 +1,6 @@
 import HomeLayoutHOC from "./HOC/Home.HOC";
 import RestaurantHOC from "./HOC/Restaurant.HOC";
- import {Route, Redirect} from "react-router-dom";
- import Temp from "./Components/Temp";
+import {Route, Redirect} from "react-router-dom";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -28,7 +27,6 @@ function App() {
       <HomeLayoutHOC path="/:type" exact component={Home} />
       <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
       <Route path="/restaurant/:id" exact component={RestaurantRedirect} />
-      <RestaurantHOC path="/restaurant/:id" exact component={Temp} />
       <RestaurantHOC path="/restaurant/:id/overview" exact component={Overview} />
       <RestaurantHOC path="/restaurant/:id/order-online" exact component={OrderOnline} />
       <RestaurantHOC path="/restaurant/:id/reviews" exact component={Reviews} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AiOutlineCamera, AIOutlineCamera} from 'react-icons/ai';
+import {AiOutlineCamera} from 'react-icons/ai';
 
 function ImageGrid(props) {
     return (
@@ -54,7 +54,7 @@ function ImageGrid(props) {
                       <div className="bg-black p-3 rounded-full bg-opacity-50">
                         <AiOutlineCamera />
                       </div>
-                      <h4>View Gallery</h4>
+                      <h4>Add Photos</h4>
                     </div>
                   </div>
               </div>
