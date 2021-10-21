@@ -1,6 +1,11 @@
+import React, { useEffect } from "react";
 import HomeLayoutHOC from "./HOC/Home.HOC";
 import RestaurantHOC from "./HOC/Restaurant.HOC";
 import {Route, Redirect} from "react-router-dom";
+
+// Redux
+import { useDispatch } from "react-redux";
+import { getMySelf } from "./Redux/Reducer/User/user.action";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -18,7 +23,17 @@ import Checkout from "./pages/Checkout";
 import RestaurantRedirect from "./pages/RestaurantRedirect";
 import GoogleAuth from "./pages/GoogleAuth";
 
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(localStorage.zomatoUser) {
+      dispatch(getMySelf());
+    }
+  }, []);
+
   return (
     <div className="App">
       <Route path="/" exact>

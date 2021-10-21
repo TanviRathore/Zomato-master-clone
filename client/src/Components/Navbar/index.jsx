@@ -7,8 +7,17 @@ import {FaUserAlt} from "react-icons/fa";
 
 import SignIn from '../Auth/SignIn';
 import SignUp from '../Auth/SignUp';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../../Redux/Reducer/Auth/auth.action';
 
 function SmNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
+
+    const dispatch = useDispatch();
+
+    const signOutHandler = () => {
+        dispatch(signOut());
+    };
+    
     return(
         <>
             <div className="flex justify-between items-center lg:hidden w-full">
@@ -21,7 +30,7 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
                 </div>
                 <div className="flex gap-3 items-center relative">
                     <button className="bg-Zomato-400 rounded-full px-2 py-2 text-white text-xs">Use App</button>
-                    {user ? (
+                    {user?.user?.fullName ? (
                        <>
                             <div onClick={() => setIsDropdownOpen((prev) => !prev)} 
                                 className="rounded-full p-1 border border-gray-400 text-Zomato-400 w-9 h-9">
@@ -33,7 +42,7 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
                             </div>
                             {isDropdownOpen && (
                                 <div className="absolute top-16 right-1 shadow-lg py-3 pl-3 pr-3 w-32 bg-white z-30 flex-col gap-2 border-2 border-gray-300 rounded">
-                                    <button>Sign out</button>
+                                    <button onClick={signOutHandler} >Sign out</button>
                                 </div>
                             )}
                        </>
@@ -59,6 +68,13 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
 };
 
 function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
+
+    const dispatch = useDispatch();
+
+    const signOutHandler = () => {
+        dispatch(signOut());
+    };
+
     return(
         <>
             <div className="hidden container lg:inline mx-auto px-20">
@@ -93,7 +109,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
                         </div>
                     </div>
 
-                    {user ? (
+                    {user?.user?.fullName ? (
                         <div className="relative w-14">
                         <div
                           onClick={() => setIsDropdownOpen((prev) => !prev)}
@@ -107,7 +123,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
                         </div>
                         {isDropdownOpen && (
                           <div className="absolute top-20 shadow-lg py-3 pl-3 pr-3 w-32 bg-white z-30 flex-col gap-2 border-2 border-gray-300 rounded">
-                            <button>Sign out</button>
+                            <button onClick={signOutHandler}>Sign out</button>
                           </div>
                         )}
                       </div>
@@ -132,8 +148,10 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
 };
 
 function Navbar() {
+
+    const reduxState = useSelector((globalStore) => globalStore.user.user);
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [user, setUser] = useState();
     const [openSignup, setOpenSignup] = useState(false);
     const [openSignin, setOpenSignin] = useState(false);
 
@@ -151,14 +169,14 @@ function Navbar() {
             <SignIn isOpen={openSignin} setIsOpen={setOpenSignin} />
             <nav className="py-3 px-4 lg:p-4 flex bg-white shadow-md lg:shadow-none w-full items-center">
                 <SmNav 
-                    user={user}
+                    user={reduxState}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
                     signIn={openSignInModal}
                     signUp={openSignUpModal}
                 />
                 <LgNav
-                    user={user}
+                    user={reduxState}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
                     signIn={openSignInModal}

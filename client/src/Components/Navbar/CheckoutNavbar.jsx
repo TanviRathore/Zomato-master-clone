@@ -1,7 +1,11 @@
 import React from 'react';
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import {useSelector} from "react-redux";
 
 function CheckoutNavbar() {
+
+    const reduxState = useSelector((globalStore) => globalStore.user.user);
+
     return (
         <>
             <nav className="flex bg-white px-2 py-1 shadow-md lg:shadow-lg w-full items-center">
@@ -21,11 +25,11 @@ function CheckoutNavbar() {
                             <div className="border p-1 border-gray-300 text-zomato-400 w-12 h-12 rounded-full">
                                 <img
                                     src="https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/87-512.png"
-                                    alt="Aditya Gusain"
+                                    alt={reduxState?.user?.userName}
                                     className="w-full h-full rounded-full object-center object-cover"
                                 />
                             </div>
-                            Tanvi Rathore
+                            {reduxState?.user?.userName}
                         </div>
                     </div>
                 </div>
