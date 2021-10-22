@@ -1,7 +1,7 @@
 import express from "express";
-import { UserModel } from "../../database/allmodel";
 import passport from "passport";
 
+import { UserModel } from "../../database/allmodel";
 import {ValidateSignIn, ValidateSignUp} from "../../validation/auth";
 
 const Router = express.Router();

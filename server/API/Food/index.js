@@ -7,7 +7,7 @@ const Router = express.Router();
 
 /*
 Route           /food/:_id
-Des             Get specific food
+Description     Get specific food
 Params          _id
 Access          Public
 Method          GET
@@ -57,7 +57,7 @@ Router.get("/c/:category", async (req, res) => {
         await ValidateCategory(req.params);
         const {category} = req.params;
 
-        const foods = await FoodModel.findOne({
+        const foods = await FoodModel.find({
             category: {$regex: category, $options: "i"},
         });
 

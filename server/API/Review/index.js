@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import ReviewModel from "../../database/allmodel";
 
 const Router = express.Router();
@@ -31,10 +32,12 @@ Access          Public
 Method          POST
 */
 
-Router.post("/new", async (req, res) => {
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
     try{
+        const {_id} = req.session.passport.user._doc;
         const {reviewData} = req.body;
-        await ReviewModel.create({...reviewData});
+
+        await ReviewModel.create({...reviewData, user: _id});
 
         return res.json({ review: "Review Successfully created" });
     }catch(error) {
@@ -43,7 +46,7 @@ Router.post("/new", async (req, res) => {
 });
 
 /*
-Route           /review/delete
+Route           /review/delete/:id
 Descriptio      Delete food review/rating
 Params          _id
 BODY            none
@@ -51,7 +54,7 @@ Access          Public
 Method          DELETE
 */
 
-Router.delete("/delete", async (req, res) => {
+Router.delete("/delete/:_id", async (req, res) => {
     try{
         const {_id} = req.params;
 
