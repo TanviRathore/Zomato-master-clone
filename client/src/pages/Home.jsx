@@ -8,7 +8,7 @@ import Dining from '../Components/Dining/index';
 import NightLife from '../Components/NightLife/index';
 import Nutrition from '../Components/Nutrition/index';
 
-import {getRestaurant} from '../Redux/Reducer/Restaurant/restaurant.action';
+import {getRestaurant} from '../Redux/Reducer/restaurant/restaurant.action';
 
 
 function Home() {

@@ -15,7 +15,7 @@ import CartContainer from "../Components/Cart/CartContainer";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {getImage} from "../Redux/Reducer/Image/Image.action";
-import {getSpecificRestaurant} from "../Redux/Reducer/Restaurant/restaurant.action";
+import {getSpecificRestaurant} from "../Redux/Reducer/restaurant/restaurant.action";
 
 function RestaurantLayout({children}) {
 

@@ -3,9 +3,9 @@
 import {combineReducers} from 'redux';
 
 // multiple reducers
-import restaurant from './Restaurant/restaurant.reducer';
+import restaurant from './restaurant/restaurant.reducer';
 import image from './Image/Image.reducer';
-import food from './Food/food.reducer';
+import food from './Food/Food.reducer';
 import reviews from './Reviews/reviews.reducer';
 import user from './User/user.reducer';
 import auth from './Auth/auth.reducer';
