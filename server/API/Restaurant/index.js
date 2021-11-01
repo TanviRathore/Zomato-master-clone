@@ -14,7 +14,7 @@ Access          Public
 Method          GET
 */
 
-Router.get("/restaurant", async(req, res) => {
+Router.get("/", async(req, res) => {
     try{
         await ValidateRestaurantCity(req.query);
         const {city} = req.query;

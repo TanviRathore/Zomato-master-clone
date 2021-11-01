@@ -15,7 +15,7 @@ import Menu from "./API/Menu/index";
 import Image from "./API/Image/index";
 import Order from "./API/Order/index";
 import Review from "./API/Review/index";
-// import User from "./API/User/index";
+import User from "./API/User/index";
 import MailService from "./API/Mail/index";
 
 const zomato = express();
@@ -35,10 +35,10 @@ zomato.use("/auth", Auth);
 zomato.use("/restaurant", Restaurant);
 zomato.use("/food", Food);
 zomato.use("/menu", Menu);
-// zomato.use("/image", Image);
-// zomato.use("/order", Order);
+zomato.use("/image", Image);
+zomato.use("/order", Order);
 zomato.use("/review", Review);
-// zomato.use("/user", User);
+zomato.use("/user", User);
 zomato.use("/mail", MailService);
 
 zomato.get("/", (req, res) => {
