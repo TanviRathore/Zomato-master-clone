@@ -108,7 +108,7 @@ export default function SignIn({isOpen, setIsOpen}) {
                                 onClick={submit}
                                 className="w-full text-center bg-Zomato-400 text-white py-2 rounded-lg"
                             >
-                                Sign up
+                                Sign in
                             </div>
                         </form>
                     </div>

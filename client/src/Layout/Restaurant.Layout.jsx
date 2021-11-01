@@ -41,7 +41,7 @@ function RestaurantLayout({children}) {
             setRestaurant((prev) => ({
               ...prev,
               ...data.payload.image,
-            }))
+            }));
           });
 
         });

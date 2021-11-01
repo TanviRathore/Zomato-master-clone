@@ -19,7 +19,7 @@ const cartReducer = (state= initialState, action) => {
         case DEL_CART:
             return {
                 ...state,
-                cart: action,payload,
+                cart: action.payload,
             };
         case INC_QTY:
             return {

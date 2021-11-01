@@ -9,6 +9,7 @@ import food from './Food/Food.reducer';
 import reviews from './Reviews/reviews.reducer';
 import user from './User/user.reducer';
 import auth from './Auth/auth.reducer';
+import cart from './Cart/cart.reducer';
 
 const rootReducer = combineReducers({
     restaurant,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     reviews,
     user,
     auth,
+    cart,
 });
 
 export default rootReducer;
