@@ -6,9 +6,9 @@ export const ValidateSignUp = (userData) => {
     const Schema = joi.object({
         fullName: joi.string().required().min(5),
         email: joi.string().email().required(),
-        paassword: joi.string(),
+        password: joi.string(),
         address: joi.array().items(joi.object({ details: joi.string(), for: joi.string() })),
-        phoneNumber: joi.number().min(10).max(10),
+        phoneNumber: joi.number(),
     });
 
     return Schema.validateAsync(userData);
@@ -17,7 +17,7 @@ export const ValidateSignUp = (userData) => {
 export const ValidateSignIn = (userData) => {
     const Schema = joi.object({
         email: joi.string().email().required(),
-        paassword: joi.string().min(5).required(),
+        password: joi.string().min(5).required(),
     });
 
     return Schema.validateAsync(userData);

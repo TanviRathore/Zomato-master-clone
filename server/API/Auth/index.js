@@ -26,7 +26,7 @@ Router.post("/signup", async (req, res) => {
     }
 });
 
-/*
+/* 
 Route           /auth/signin
 description     Sign In the user
 params          none
@@ -37,7 +37,7 @@ method          POST
 Router.post("/signin", async (req, res) => {
     try{
         await ValidateSignIn(req.body.credentials);
-        const user = UserModel.findByEmailAndPassword(req.body.credentials);
+        const user = await UserModel.findByEmailAndPassword(req.body.credentials);
         const token = user.generateJwtToken();
         return res.status(200).json({token, status: "success"});
     }catch(error){

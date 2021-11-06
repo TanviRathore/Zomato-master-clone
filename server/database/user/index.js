@@ -42,7 +42,7 @@ UserSchema.statics.findByEmailAndPassword = async ({ password, email }) => {
 };
 
 // methods have to be instantiated. methods are available only after the process has been started.
-UserSchema.methods.generateJwtToken = function() {
+UserSchema.methods.generateJwtToken = function () {
     return jwt.sign({ user: this._id.toString() }, "ZomatoAPP");
 };
 

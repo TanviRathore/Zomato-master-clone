@@ -10,7 +10,7 @@ function FoodList(props) {
                 </h2>
                 <div classNam="flex flex-col gap-3">
                     {props.items.map((item) => (
-                        <FoodItem {...item} key={item._id} />
+                        <FoodItem {...item} key={item._id}  _id={item} />
                     ))}
                 </div>
             </div>

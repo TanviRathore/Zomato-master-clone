@@ -12,7 +12,7 @@ export default function SignUp({isOpen, setIsOpen}) {
     const [userData, setUserData] = useState({
         email: "",
         password: "",
-        fullname: "",
+        fullName: "",
     });
 
     const handleChange = (e) => {
@@ -25,19 +25,21 @@ export default function SignUp({isOpen, setIsOpen}) {
 
     const submit = () => {
         setUserData({
-            
+            email: "",
+            password: "",
+            fullName: "",
         });
 
         dispatch(signUp({
             email: userData.email,
             password: userData.password,
-            fullname: userData.fullname,
+            fullName: userData.fullName,
         }));
 
         closeModal();
     };
 
-    const googleSignUp = () => (window.location.href = "http://localhost:4000/auth/google");
+    const googleSignUp = () => (window.location.href = "http://localhost:5000/auth/google");
 
     return (
         <>
@@ -87,12 +89,12 @@ export default function SignUp({isOpen, setIsOpen}) {
                             </button>
                             <form className="flex flex-col gap-3">
                                 <div className="flex flex-col gap-2">
-                                    <label htmlFor="fullname">Full Name</label>
+                                    <label htmlFor="fullName">Full Name</label>
                                     <input 
                                         type="text"
-                                        id="fullname"
+                                        id="fullName"
                                         placeholder="Tanvi Rathore"
-                                        value={userData.fullname}
+                                        value={userData.fullName}
                                         onChange={handleChange}
                                         className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-Zomato-400"
                                     />

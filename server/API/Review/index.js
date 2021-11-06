@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import ReviewModel from "../../database/allmodel";
+import {ReviewModel} from "../../database/allmodel";
 
 const Router = express.Router();
 
@@ -15,7 +15,7 @@ Method          GET
 Router.get("/:resid", async (req, res) => {
     try{
         const {resid} = req.params;
-        const reviews = await RestaurantModel.find({restaurant: resid});
+        const reviews = await ReviewModel.find({restaurant: resid});
 
         return res.json({reviews});
     }catch(error) {

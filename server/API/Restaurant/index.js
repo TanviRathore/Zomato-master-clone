@@ -1,5 +1,5 @@
 import express from "express";
-import RestaurantModel from "../../database/allmodel";
+import {RestaurantModel} from "../../database/allmodel";
 
 import { ValidateRestaurantCity, ValidateRestaurantSearchString } from "../../validation/restaurant";
 import {ValidateRestaurantId} from "../../validation/food";
@@ -19,7 +19,7 @@ Router.get("/", async(req, res) => {
         await ValidateRestaurantCity(req.query);
         const {city} = req.query;
         const restaurants = await RestaurantModel.find({city});
-
+ 
         return res.json({ restaurants });
     }catch(error) {
         return res.status(500).json({error: error.message});

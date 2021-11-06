@@ -32,7 +32,7 @@ export default function SignIn({isOpen, setIsOpen}) {
         closeModal();
     };
 
-    const googleSignIn = () => (window.location.href = "http://localhost:4000/auth/google");
+    const googleSignIn = () => (window.location.href = "http://localhost:5000/auth/google");
 
     return (
         <>

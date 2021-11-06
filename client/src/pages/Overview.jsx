@@ -24,6 +24,7 @@ function Overview() {
     const [Reviews, setReviews] = useState([]);
 
     const reduxState = useSelector((globalStore) => globalStore.restaurant.selectedRestaurant.restaurant);
+    console.log(reduxState);
 
     useEffect(() => {
       if(reduxState) {
@@ -33,7 +34,7 @@ function Overview() {
           setMenuImages(images);
         });
 
-        dispatch(getReviews(id)).then((data) => {
+        dispatch(getReviews(reduxState?._id)).then((data) => {
           setReviews(data.payload.reviews);
         });
       }
@@ -105,7 +106,7 @@ function Overview() {
                     </div>
                     <h4 className="text-lg font-medium my-4">Cuisines</h4>
                     <div className="flex flex-wrap gap-2">
-                      {reduxState?.cuisines.map((data) => (
+                      {reduxState ?.cuisines ?.map((data) => (
                         <span className="border border-gray-400 text-green-700 rounded-full px-2 py-1">
                           {data}
                         </span>
@@ -171,7 +172,7 @@ function Overview() {
                           activeColor="#ffd700"
                           size={24}
                         />
-                        {Reviews.map((reviewData) => (
+                        {Reviews ?.map((reviewData) => (
                           <ReviewCard {...reviewData} />
                         ))}
                     </div>

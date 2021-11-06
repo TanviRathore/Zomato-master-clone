@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {getImage} from "../Redux/Reducer/Image/Image.action";
 import {getSpecificRestaurant} from "../Redux/Reducer/restaurant/restaurant.action";
+import {getCart} from "../Redux/Reducer/Cart/cart.action";
 
 function RestaurantLayout({children}) {
 
@@ -32,19 +33,21 @@ function RestaurantLayout({children}) {
 
       useEffect(() => {
         dispatch(getSpecificRestaurant(id)).then((data) => {
+          console.log(data);
           setRestaurant((prev) => ({
             ...prev,
             ...data.payload.restaurant,
           }));
-
+          
           dispatch(getImage(data.payload.restaurant.photos)).then((data) => {
             setRestaurant((prev) => ({
               ...prev,
               ...data.payload.image,
             }));
           });
-
         });
+
+        dispatch(getCart());
       }, []);
 
     return (

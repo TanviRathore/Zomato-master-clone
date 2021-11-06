@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { AiOutlineCompass } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 
@@ -6,88 +6,35 @@ import FoodList from '../Components/Restaurant/Order-Online/FoodList';
 import MenuListContainer from '../Components/Restaurant/Order-Online/MenuListContainer';
 import FloatMenuBtn from '../Components/Restaurant/Order-Online/FloatMenuBtn';
 
+import { useDispatch, useSelector } from 'react-redux';
+import {getFoodList} from '../Redux/Reducer/Food/Food.action';
+
 function OrderOnline() {
 
-    const [menu, setMenu] = useState([
-        {
-          name: "Recommended",
-          items: [
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-          ],
-        },
-        {
-          name: "Combos",
-          items: [
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-          ],
-        },
-        {
-          name: "Half and Half Combos",
-          items: [
-            {
-              image:
-                "https://b.zmtcdn.com/data/dish_photos/87c/153beb91af9f43e157f3d6fd6ea2587c.jpg?output-format=webp",
-              name: "Chilli Paneer Gravy",
-              price: "157.50",
-              rating: 4,
-              descript:
-                "Chicken NoodelsChicken Fried Rice+Chilli ChickenChicken Manchurian+Chilli PotatoHoney Chilli Potato+Chicken Chilli Garlic Momos [2 ... read more",
-            },
-          ],
-        },
-      ]);
+  const dispatch = useDispatch();
 
-    const [selected, setSelected] = useState("Recommended");
+  const reduxState = useSelector((globalStore) => globalStore.restaurant.selectedRestaurant.restaurant);
 
-    const onClickHandler = (e) => {
-        if(e.target.id){
-            setSelected(e.target.id);
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getFoodList(reduxState.menu)).then((data) => {
+        if (data.payload.menus) {
+          setMenu(data.payload.menus.menus);
         }
-        return;
-    };
+      });
+    }
+  }, [reduxState]);
+
+  const [menu, setMenu] = useState([]);
+
+  const [selected, setSelected] = useState("Recommended");
+
+  const onClickHandler = (e) => {
+      if(e.target.id){
+        setSelected(e.target.id);
+      }
+      return;
+  };
 
     return (
         <>
