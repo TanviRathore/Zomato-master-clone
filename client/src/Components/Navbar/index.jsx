@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import {HiLocationMarker} from "react-icons/hi";
 import {IoMdArrowDropdown, IoMdArrowDropup} from "react-icons/io"
@@ -150,6 +150,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, signIn, signUp}){
 function Navbar() {
 
     const reduxState = useSelector((globalStore) => globalStore.user.user);
+    console.log(reduxState);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);

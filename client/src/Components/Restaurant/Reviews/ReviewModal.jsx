@@ -1,8 +1,15 @@
 import { Fragment, useState } from 'react';
+import {useParams} from 'react-router-dom';
 import {Dialog, Transition} from '@headlessui/react';
 import Rating from 'react-rating-stars-component';
 
+import {useDispatch} from 'react-redux';
+import {postReviews} from '../../../Redux/Reducer/Reviews/reviews.action';
+
 function ReviewModal({isOpen, setIsOpen, ...props}) {
+
+    const {id} = useParams();
+    const dispatch = useDispatch();
 
     const [reviewData, setReviewData] = useState({
         subject: "",
@@ -34,6 +41,24 @@ function ReviewModal({isOpen, setIsOpen, ...props}) {
             isRestaurantReview: false, 
             isFoodReview: !prev.isFoodReview,
         }));
+    };
+
+    const submit = () => {
+        dispatch(
+            postReviews({
+              ...reviewData,
+              restaurant: id,
+            })
+        );
+
+        setReviewData({
+            subject: "",
+            reviewText: "",
+            isRestaurantReview: false,
+            isFoodReview: false,
+            rating: 0,
+        });
+        closeModal();
     };
 
     return (
@@ -137,7 +162,7 @@ function ReviewModal({isOpen, setIsOpen, ...props}) {
                                     <button
                                         type="button"
                                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={closeModal}
+                                        onClick={submit}
                                     >
                                         Submit
                                     </button>

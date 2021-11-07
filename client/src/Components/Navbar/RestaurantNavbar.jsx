@@ -150,6 +150,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, SignIn, SignUp}){
 function RestaurantNav() {
 
     const reduxState = useSelector((globalStore) => globalStore.user.user);
+    console.log(reduxState);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);

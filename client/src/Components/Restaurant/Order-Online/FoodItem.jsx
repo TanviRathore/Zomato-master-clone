@@ -16,11 +16,12 @@ function FoodItem(props) {
     const reduxState = useSelector((globalStore) => globalStore.cart.cart.filter((each) => each.id === props.id));
 
     useEffect(() => {
-        console.log(props);
+        console.log(props._id);
         dispatch(getFood(props._id)).then((data) => {
             setFood(data.payload.foods);
             dispatch(getImage(data.payload.foods.photos)).then((data) => {
                 const {images} = data.payload.image;
+                console.log(images);
                 images.length && setFood((prev) => ({ ...prev, image: images[0].location }));
             });
         });
@@ -35,7 +36,7 @@ function FoodItem(props) {
         <>
             {food ?.name && (
                 <div className="flex items-start gap-2 py-2">
-                    {props?.image && (
+                    {food ?.image && (
                         <div className="w-3/12 h-24 md:h-28 lg:h-36  md:px-3">
                             <img 
                                 src={food ?.image}
@@ -68,7 +69,7 @@ function FoodItem(props) {
                         <button 
                             onClick={addFoodToCart} 
                             disabled={food.isAddedToCart}
-                            className="px-2 py-1 border border-Zomato-400 bg-Zomato-50 text-Zomato-50 flex md:hidden rounded-lg gap-2">
+                            className="flex items-center gap-2 text-Zomato-400 border border-Zomato-400 bg-Zomato-50 px-2 py-1 rounded-lg">
                                 {food.isAddedToCart ? (
                                     "Added"
                                     ) : (

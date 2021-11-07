@@ -70,6 +70,8 @@ Router.put("/update/:userId", async (req, res) => {
                 new: true,
             }
         );
+
+        return res.json({ user: updateUserData });
     }catch(error) {
         return res.status(500).json({error: error.message});
     }
