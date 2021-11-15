@@ -34,7 +34,7 @@ function RestaurantCard(props) {
 
                             {props.isOff && (
                                 <span className=" bg-blue-600 text-white px-2 py-1  rounded text-sm">
-                                    $20 off
+                                    ₹20 off
                                 </span>
                             )}
                         </div>
@@ -55,9 +55,9 @@ function RestaurantCard(props) {
                             {props.restaurantReviewValue} <AiTwotoneStar />
                         </span>
                     </div>
-                    <div className="flex items-center justify-between text-gray-500">
+                    <div className="flex items-center justify-between text-gray-500 text-sm">
                         <p>{props.cuisine.join(", ")}</p>
-                        <p>${props.averageCost} for one </p>
+                        <p>₹{props.averageCost} for one </p>
                     </div>
                 </div>
             </div>

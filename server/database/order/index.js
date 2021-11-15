@@ -21,7 +21,7 @@ const OrderSchema = new mongoose.Schema({
             },
         },
     ],
-    orderRatings: {type: String, required: true},
+    orderRatings: {type: String},
 },{
     timestamps: true,
 });

@@ -44,23 +44,23 @@ function DeliveryCarousel() {
       ];
 
       const settings = {
-          arrows: true,
-          infinite: false,
-          speed: 500,
-          slidesToShow: 4,
-          slidesToScroll: 2,
-          initialSlide: 0,
-          nextArrow: <NextArrow />,
-          prevArrow: <PrevArrow />,
-          responsive: [
-              {
-                breakpoint: 1299,
-                settings: {
-                slidesToShow: 3,
-                },
+        arrows: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+        responsive: [
+          {
+            breakpoint: 1299,
+            settings: {
+            slidesToShow: 3,
             },
+          },
         ],
-      };
+    };
 
     return (
         <div className="bg-gray-100 px-1">

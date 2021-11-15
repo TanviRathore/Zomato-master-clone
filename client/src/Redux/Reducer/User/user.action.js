@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'; 
 
-import { GET_USER, SELF, CLEAR_USER } from "./user.type";
+import { GET_USER, SELF, CLEAR_USER, GET_USERID } from "./user.type";
 
 export const getUser = (_id) => async (dispatch) => {
     try{
@@ -30,6 +30,19 @@ export const getMySelf = () => async (dispatch) => {
 export const clearUser = () => (dispatch) => {
     try{
         return dispatch({ type: CLEAR_USER, payload: {} });
+    }catch(error) {
+        return dispatch({ type: "ERROR", payload: error });
+    }
+};
+
+export const getUserId = (email) => async(dispatch) => {
+    try{
+        const userId = await axios({
+            method: "GET",
+            url: `http://localhost:5000/user/resetPassword/${email}`
+        });
+
+        return dispatch({ type: GET_USERID, payload: userId });
     }catch(error) {
         return dispatch({ type: "ERROR", payload: error });
     }

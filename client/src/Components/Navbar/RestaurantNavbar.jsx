@@ -16,7 +16,7 @@ function SmNav({user, isDropdownOpen, setIsDropdownOpen, SignIn, SignUp}){
     const dispatch = useDispatch();
 
     const signOutHandler = () => {
-        dispatch(signOut);
+        dispatch(signOut());
     };
 
     return(
@@ -74,7 +74,7 @@ function LgNav({user, isDropdownOpen, setIsDropdownOpen, SignIn, SignUp}){
     const dispatch = useDispatch();
 
     const signOutHandler = () => {
-        dispatch(signOut);
+        dispatch(signOut());
     };
 
     return(

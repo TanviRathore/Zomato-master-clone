@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 
 import {useDispatch} from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 import {signIn} from '../../Redux/Reducer/Auth/auth.action';
 
 export default function SignIn({isOpen, setIsOpen}) {
@@ -20,6 +21,11 @@ export default function SignIn({isOpen, setIsOpen}) {
     }
 
     const dispatch = useDispatch();
+    // const history = useHistory();
+
+    // const forgetPassword = () => {
+    //     history.push("/forgetPassword/passReset");
+    // };
 
     const  submit = () => {
         setUserData({
@@ -104,6 +110,11 @@ export default function SignIn({isOpen, setIsOpen}) {
                                     className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-Zomato-400"
                                 />
                             </div>
+                            <Link to={"/forget/passreset"}>
+                                <button className="text-blue-800 text-sm"> {/*onclick={forgetPassword} */}
+                                    Forget Password?
+                                </button>
+                            </Link>
                             <div
                                 onClick={submit}
                                 className="w-full text-center bg-Zomato-400 text-white py-2 rounded-lg"

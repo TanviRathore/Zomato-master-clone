@@ -31,7 +31,7 @@ Router.get("/:_id", passport.authenticate('jwt', { session: false }), async (req
 });
 
 /*
-Route           /restaurant/new/:_id
+Route           /order/new/:_id
 Description     Add new order
 Params          _id
 Body            orderDetails
@@ -39,7 +39,7 @@ Access          Public
 Method          POST
 */
 
-Router.post("/new/:_id", passport.authenticate('jwt'), async (req, res) => {
+Router.post("/new", passport.authenticate('jwt'), async (req, res) => {
     try{
         const {_id} = req.params;
 
@@ -56,6 +56,15 @@ Router.post("/new/:_id", passport.authenticate('jwt'), async (req, res) => {
                 new: true,
             }
         );
+
+        if (!addNewOrder) {
+            const details = await OrderModel.create({
+              user: _id,
+              orderDetails: [orderDetails],
+            });
+            console.log(details);
+            return res.json({ order: details });
+          }
 
         return res.json({ order: addNewOrder });
 

@@ -18,6 +18,8 @@ import Order from "./API/Order/index";
 import Review from "./API/Review/index";
 import User from "./API/User/index";
 import MailService from "./API/Mail/index";
+import Payment from "./API/Payment/index";
+import Password from "./API/Password/index";
 
 const zomato = express();
 
@@ -42,6 +44,8 @@ zomato.use("/order", Order);
 zomato.use("/review", Review);
 zomato.use("/user", User);
 zomato.use("/mail", MailService);
+zomato.use("/payment", Payment);
+zomato.use("/password", Password);
 
 zomato.get("/", (req, res) => {
   res.json({ message: "Setup Success" });

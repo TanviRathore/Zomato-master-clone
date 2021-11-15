@@ -63,7 +63,7 @@ function FoodItem(props) {
                         </div>
                         <ReactStars count={5} value={food ?.rating || 0} />
                         <h5>$ {food ?.price}</h5>
-                        <p className="truncate">{food ?.descript}</p>
+                        <p className="truncate">{food ?.description}</p>
                     </div>
                     <div className="hidden md:block w-2/12">
                         <button 

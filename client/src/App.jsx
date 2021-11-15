@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import HomeLayoutHOC from "./HOC/Home.HOC";
 import RestaurantHOC from "./HOC/Restaurant.HOC";
+import ForgetPassLayoutHOC from "./HOC/ForgetPass.HOC";
 import {Route, Redirect} from "react-router-dom";
 
 // Redux
@@ -22,7 +23,8 @@ import CheckoutLayoutHOC from "./HOC/Checkout.HOC";
 import Checkout from "./pages/Checkout";
 import RestaurantRedirect from "./pages/RestaurantRedirect";
 import GoogleAuth from "./pages/GoogleAuth";
-
+import PassReset from "./pages/PassReset";
+import PassResetByOTP from "./pages/PassResetByOTP";
 
 function App() {
 
@@ -48,6 +50,8 @@ function App() {
       <RestaurantHOC path="/restaurant/:id/menu" exact component={Menu} />
       <RestaurantHOC path="/restaurant/:id/photos" exact component={Photos} />
       <CheckoutLayoutHOC path="/checkout/orders" exact component={Checkout} />
+      <ForgetPassLayoutHOC path="/forget/passreset" exact component={PassReset} />
+      <ForgetPassLayoutHOC path="/reset/otp/:email" exact component={PassResetByOTP} />
     </div>
   );
 }

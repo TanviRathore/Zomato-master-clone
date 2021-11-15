@@ -34,3 +34,80 @@ export const addCart = (newFood) => async(dispatch) => {
         return dispatch({ type: "ERROR", payload: error });
     }
 };
+
+export const deleteCart = (foodId) => async (dispatch) => {
+    try{
+        let cartData = { cart: [] };
+    
+        if (localStorage.zomatoCart) {
+          const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+          cartData.cart = cart;
+        }
+    
+        if (!cartData.cart.length) {
+          return dispatch({ type: "ERROR", payload: "Cart is Empty" });
+        }
+    
+        cartData.cart = cartData.cart.filter(({ _id }) => _id !== foodId);
+    
+        localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    
+        return dispatch({ type: DEL_CART, payload: cartData.cart });
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+    }
+};
+
+export const incQty = (foodId) => async (dispatch) => {
+    try {
+      let cartData = { cart: [] };
+  
+      if (localStorage.zomatoCart) {
+        const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+        cartData.cart = cart;
+      }
+  
+      cartData.cart = cartData.cart.map((food) =>
+        food._id === foodId
+          ? {
+              ...food,
+              quantity: food.quantity + 1,
+              totalPrice: food.price * (food.quantity + 1),
+            }
+          : food
+      );
+  
+      localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+  
+      return dispatch({ type: INC_QTY, payload: cartData.cart });
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
+  };
+
+  export const decQty = (foodId) => async (dispatch) => {
+    try {
+      let cartData = { cart: [] };
+  
+      if (localStorage.zomatoCart) {
+        const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+        cartData.cart = cart;
+      }
+  
+      cartData.cart = cartData.cart.map((food) =>
+        food._id === foodId
+          ? {
+              ...food,
+              quantity: food.quantity - 1,
+              totalPrice: food.price * (food.quantity - 1),
+            }
+          : food
+      );
+  
+      localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+  
+      return dispatch({ type: DEC_QTY, payload: cartData.cart });
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
+  };

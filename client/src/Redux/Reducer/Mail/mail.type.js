@@ -1,0 +1,1 @@
+export const PASS_RESET_MAIL = "PASS_RESET_MAIL";

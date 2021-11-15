@@ -10,6 +10,9 @@ import reviews from './Reviews/reviews.reducer';
 import user from './User/user.reducer';
 import auth from './Auth/auth.reducer';
 import cart from './Cart/cart.reducer';
+import order from './Order/order.reducer';
+import mail from './Mail/mail.reducer';
+import password from './Password/password.reducer';
 
 const rootReducer = combineReducers({
     restaurant,
@@ -19,6 +22,9 @@ const rootReducer = combineReducers({
     user,
     auth,
     cart,
+    order,
+    mail,
+    password,
 });
 
 export default rootReducer;
