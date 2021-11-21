@@ -66,7 +66,7 @@ function Checkout() {
                 <h3 className="text-lg font-semibold">Summary</h3>
                 <div className="flex flex-col gap-2 items-center">
                   <h5 className="text-base tracking-wider">ORDER FROM</h5>
-                  <div className="flex-col flex w-full items-center text-gray-400">
+                  <div className="flex-col flex w-full items-center text-gray-400 px-4">
                     <h4>{reduxStateRestaurant?.name}</h4>
                     <small>
                       {reduxStateRestaurant?.address}
