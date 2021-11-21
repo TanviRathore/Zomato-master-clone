@@ -51,13 +51,13 @@ function FoodItem(props) {
                             <button 
                                 onClick={addFoodToCart} 
                                 disabled={food.isAddedToCart}
-                                className="px-2 py-1 border border-Zomato-400 bg-Zomato-50 text-Zomato-50 flex md:hidden rounded-lg gap-2">
-                                {food.isAddedToCart ? (
-                                    "Added"
-                                    ) : (
-                                        <>
-                                            <AiOutlinePlus /> Add
-                                        </>
+                                className="flex items-center gap-1 text-Zomato-400 border border-Zomato-400 bg-Zomato-50 px-1 py-1 rounded-lg">
+                                    {food.isAddedToCart ? (
+                                        "Added"
+                                        ) : (
+                                            <>
+                                                <AiOutlinePlus /> Add
+                                            </>
                                     )}
                             </button>
                         </div>
